@@ -10,12 +10,14 @@ const Auth = () =>{
                 <input className ="auth__page_date" type="text"></input>
             </div>
             <div>
-                <label className ="auth__page_label_date" >Пароль</label>
+                <label className ="auth__page_label_date">Пароль</label>
                 <input className ="auth__page_date" type="text"></input>
             </div>
             <div>
-               <input className ="auth__page_checkbox" type="checkbox" />
-               <label className ="auth__page_label_checkbox">Запомнить пароль</label>
+            <div className ="auth__page_checkbox_container">
+               <input className ="auth__page_checkbox" type="checkbox" id="checkbox_1"/>
+               <label className ="auth__page_label" for="checkbox_1">Запомнить пароль</label>
+               </div>
             </div>
              <button type="submit">Войти</button>
 
