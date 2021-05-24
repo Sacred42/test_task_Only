@@ -1,0 +1,9 @@
+body{
+    font-family: "Helvetica Neue"; 
+
+}
+
+.container {
+    margin: 20% auto;
+    width : 640px;
+}
