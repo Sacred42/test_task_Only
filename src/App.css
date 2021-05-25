@@ -1,9 +1,16 @@
-body{
-    font-family: "Helvetica Neue"; 
 
+html{
+    box-sizing: border-box;
+    font-family: "Helvetica Neue"; 
+}
+*, *::before, *::after{
+    box-sizing: inherit;
 }
 
 .container {
-    margin: 20% auto;
-    width : 640px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
 }

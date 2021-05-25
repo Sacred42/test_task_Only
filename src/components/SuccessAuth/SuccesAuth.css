@@ -1,0 +1,31 @@
+.success__main{
+    font-size:40px;
+    font-weight: 400;
+    line-height:48px;
+
+}
+
+.success__user{
+    font-weight: 700;
+}
+
+.success__btn{
+    display:flex;
+    justify-content:center;
+}
+
+.success__main button{
+    margin-top:50px;
+    min-width:200px;
+    min-height:60px;
+    background-color:#F5F5F5;
+    font-size:18px;
+    font-weight:700;
+    line-height:21px;
+    border-radius:8px;  
+    border:0px;
+}
+
+.success__main a{
+    text-decoration:none;
+}
