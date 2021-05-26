@@ -64,16 +64,14 @@ border: 1px solid #000;
     border-radius: 2px;
     opacity: 0;
     position:absolute;
-    top: 4px;
-    left: 4px;
+    top: 3px;
+    left: 3px;
     z-index: 2;
 }
 
 .auth__page_checkbox:checked + .auth__page_label_checkbox::after{
     opacity: 1;
 }
-
-
 
 
 .auth__page button{
@@ -93,4 +91,12 @@ border: 1px solid #000;
     opacity: 0.65; 
     cursor: default;
     pointer-events: none;
+}
+
+.danger__error{
+    color: #E26F6F;
+}
+
+.danger__border{
+    border:1px solid #E26F6F;
 }

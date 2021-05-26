@@ -1,0 +1,9 @@
+.auth__failure{
+    width:640px;
+    height:60px;
+    background-color:#F5E9E9;
+    border-radius:8px;
+    border: 1px solid #E26F6F;
+    margin-bottom: 27px;
+    padding:21px 0px 0px 54px;
+}
