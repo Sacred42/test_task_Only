@@ -4,18 +4,19 @@ import { useForm } from "react-hook-form";
 import FailureAuth from "../FailureAuth/FailureAuth";
 
 const Auth = (props) =>{
-    const { register, watch, setValue, handleSubmit, formState: { errors }} = useForm();
+    const { register, setValue, handleSubmit, formState: { errors }} = useForm();
     const [badAuth, setBadAuth] = useState(null);
     const [getAuth, setGetAuth] = useState(null);
     const [disabledBtn, setDisabledBtn] = useState("");
-    const watchPassword = watch("password");
-    const wathcCheckBox = watch("checkbox");
-    
-
-    console.log(watchPassword);
-    console.log(wathcCheckBox);
+    const [toggleCheck, setToggleCheck] = useState(false);
+    const [password , setPassword] = useState(localStorage.getItem('password'));
 
     useEffect(()=>{
+     if(password){
+         setToggleCheck(true);
+         setValue("password", password); 
+         setPassword(null);
+     }
      if(getAuth === 'expect'){
       setDisabledBtn('disabled_btn')
      }
@@ -23,8 +24,10 @@ const Auth = (props) =>{
     },[getAuth])
 
     const getDate = ({firstName, password}) => {
+
         setGetAuth('expect');
         setTimeout(()=>{
+            setRemindPassword(password);
             setGetAuth('success');
             setDisabledBtn(null);
             if(firstName === "steve.jobs@example.com" && password === "password"){
@@ -35,11 +38,20 @@ const Auth = (props) =>{
         },2000)   
     }
 
+    const changeCheckBox = () =>{
+        setToggleCheck((prev)=>!prev)
+    }
+
     const setRemindPassword = (password) =>{
-       if(wathcCheckBox){
-        return localStorage.setItem('password' , password);
-       }
-       localStorage.removeItem('password');   
+       if(toggleCheck){
+         localStorage.setItem('password' , password);
+       }  
+    }
+
+    const unSetRemindPassword = () =>{
+        if(toggleCheck){
+            localStorage.removeItem('password')
+        }    
     }
 
     return(
@@ -53,16 +65,16 @@ const Auth = (props) =>{
             </div>
             <div>
                 <label className ="auth__page_label_date">Пароль</label>
-                <input className ="auth__page_date" type="text" {...register("password" , {required: true})}></input>
+                <input className ="auth__page_date" type="text" autoComplete="off" type="password" {...register("password" , {required: true})}></input>
                 {errors.password && <p>Обязательное поле</p>}
             </div>
             <div>
             <div className ="auth__page_checkbox_container">
-               <input className ="auth__page_checkbox" type="checkbox" id="checkbox_1" {...register("checkbox")}/>
+               <input className ="auth__page_checkbox" type="checkbox" id="checkbox_1" onClick={()=>{unSetRemindPassword()}} onChange={()=>changeCheckBox()} checked={toggleCheck}/>
                <label className ="auth__page_label_checkbox" htmlFor="checkbox_1">Запомнить пароль</label>
                </div>
             </div>
-             <button className={disabledBtn} onClick={()=>setRemindPassword()} type="submit">Войти</button>
+             <button className={disabledBtn} type="submit">Войти</button>
           </form>
         </div>
     )
