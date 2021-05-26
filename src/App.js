@@ -11,7 +11,7 @@ function App() {
       <Header/>
        <div className="container">
          <Route exact path ="/" component={Auth}/>
-         <Route exact path ="/profile" component={SuccessAuth}/>
+         <Route path ="/profile" component={SuccessAuth}/>
       </div>  
     </div>
     </BrowserRouter>

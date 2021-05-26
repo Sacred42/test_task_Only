@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import FailureAuth from "../FailureAuth/FailureAuth";
 
 const Auth = (props) =>{
-    const { register, setValue, handleSubmit, formState: { errors }} = useForm();
+    
     const [badAuth, setBadAuth] = useState(null); // статус ошибки
     const [getAuth, setGetAuth] = useState(null); // статус авторизации
     const [disabledBtn, setDisabledBtn] = useState(""); // статус кнопки
@@ -12,6 +12,8 @@ const Auth = (props) =>{
     const [password , setPassword] = useState(localStorage.getItem('password'));
     const [user, setUser] = useState(null);
     const dangerBoder = "danger__border";
+
+    const { register, setValue, handleSubmit, formState: { errors }} = useForm();
 
     useEffect(()=>{
      if(password){
@@ -63,8 +65,9 @@ const Auth = (props) =>{
             <div>{badAuth && <FailureAuth user={user}/>}</div>
             <div>
                 <label className ="auth__page_label_date">Логин</label>
-                <input className ={`auth__page_date ${errors.firstName ? dangerBoder : null}`} type="text" {...register("firstName" , {required: true})} ></input>
-                {errors.firstName && <p className="danger__error">Обязательное поле</p>}
+                <input className ={`auth__page_date ${errors.firstName ? dangerBoder : null}`} type="text" {...register("firstName" , {required: true, pattern : /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/})} ></input>
+                {errors.firstName?.type === "required" && <p className="danger__error">Обязательное поле</p>}
+                {errors.firstName?.type === "pattern" && <p className="danger__error">Неправильный формат Email</p>}
             </div>
             <div>
                 <label className ="auth__page_label_date">Пароль</label>

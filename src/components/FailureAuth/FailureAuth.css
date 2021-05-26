@@ -7,3 +7,26 @@
     margin-bottom: 27px;
     padding:21px 0px 0px 54px;
 }
+
+.auth__failure::before{
+    content:"!";
+    position: absolute;
+    color: #EE6565;
+    left:28px;
+    top:21px;
+    z-index: 2;
+}
+
+.auth__failure::after{
+    content:"";
+    display: block;
+    position: absolute;
+    width:20px;
+    height:20px;
+    background-color: #FFC8C8;
+    left: 20px;
+    top:20px;
+    border-radius:50%;
+    z-index: 1;
+    
+}
