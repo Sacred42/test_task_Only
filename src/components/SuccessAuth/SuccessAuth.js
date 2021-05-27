@@ -6,7 +6,7 @@ const SuccessAuth = () =>{
      <div  className="success__main">
      <span className="success__gretting">Здраствуйте, </span>
      <span className="success__user">{authUser}</span>
-     <Link to="/" className="success__btn"><button>Выйти</button></Link>
+     <Link to="/login" className="success__btn"><button>Выйти</button></Link>
      </div>
     )
 }
