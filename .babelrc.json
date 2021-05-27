@@ -1,0 +1,16 @@
+{
+    "presets": [[
+        "@babel/env",
+        {
+          "targets": {
+            "chrome" : "61.0.0"
+          }
+        }],
+        "@babel/preset-react",
+        "@babel/preset-flow"
+    ],
+
+    "plugins": [
+            "@babel/plugin-transform-runtime"
+    ]
+  }
